@@ -1,0 +1,73 @@
+.entity-manager-container {
+  width: 95vw;
+  height: 95vh;
+  margin: 0;
+  padding: 0;
+  border-radius: 12px;
+  box-shadow: none;
+  background: #121212;
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "list content"
+    "menu menu";
+  grid-template-columns: minmax(50px, 220px) 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
+.entity-manager-container hr {
+  border: none;
+  border-top: 2px solid #444;
+  margin: 16px 0;
+  width: 100%;
+}
+
+.entity-manager-header {
+  grid-area: header;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-radius: 12px 12px 0 0;
+}
+
+.entity-list {
+  grid-area: list;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.entity-item {
+  background: #1a1a1a;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 8px;
+  padding: 12px;
+  color: #fff;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.entity-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.entity-container {
+  grid-area: content;
+  display: grid;
+  grid-template-areas:
+    "entity"
+    "menu";
+  align-items: center;
+  padding: 12px;
+}
+
+.return-button {
+  grid-area: menu;
+}

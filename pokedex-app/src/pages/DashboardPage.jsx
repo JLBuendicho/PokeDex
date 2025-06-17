@@ -12,6 +12,11 @@ function Dashboard() {
         {user?.username || user?.name || user?.email || "user"}
       </h1>
       <RoleProtectedNavButton
+        navTo="/manage-admin"
+        buttonText="Manage Admins"
+        allowedRoles={["Admin"]}
+      />
+      <RoleProtectedNavButton
         navTo="/add-pokemon"
         buttonText="Add Pokemon"
         allowedRoles={["Admin"]}

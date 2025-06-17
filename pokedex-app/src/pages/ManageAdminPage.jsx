@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import axios from "axios";
+import "../styles/EntityManagerPage.css";
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -14,18 +16,28 @@ function ManageAdminPage() {
     fetchUsers();
   }, []);
 
-  console.log(users);
-
   return (
-    <ul>
-      {users
-        .filter((user) => user.role === "admin")
-        .map((user) => (
-          <li key={user.id}>
-            {user.username} - {user.role}
-          </li>
-        ))}
-    </ul>
+    <div className="entity-manager-container">
+      <div className="entity-manager-header">
+        <h1>Manage Admins</h1>
+        <hr />
+      </div>
+      <div className="entity-list">
+        {users
+          .filter((user) => user.role === "Admin")
+          .map((user) => (
+            <Link key ={user.id} to={`/manage-admin/${user.id}`}><div className="entity-item">{user.id} {user.username}</div></Link>
+          ))}
+      </div>
+      <div className="entity-container">
+        <Outlet />
+      </div>
+      <div className="return-button">
+        <NavLink to="/dashboard">
+        <button>Return to Dash</button>
+      </NavLink>
+      </div>
+    </div>
   );
 }
 

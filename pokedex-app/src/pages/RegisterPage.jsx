@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import "./AuthPage.css";
+import "../styles/AuthPage.css";
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 

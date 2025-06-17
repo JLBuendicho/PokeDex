@@ -3,11 +3,13 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedRoute from "./context/ProtectedRouteContext.jsx";
 import RoleProtectedRoute from "./context/RoleProtectedRouteContext.jsx";
-import "./index.css";
+import "./styles/index.css";
 import Login from "./pages/LoginPage.jsx";
 import Register from "./pages/RegisterPage.jsx";
 import AuthProvider from "./context/AuthContext.jsx";
 import Dashboard from "./pages/DashboardPage.jsx";
+import ManageAdmin from "./pages/ManageAdminPage.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
 import AddPokemon from "./pages/AddPokemonPage.jsx";
 import PokeDex from "./pages/PokeDexPage.jsx";
 
@@ -32,9 +34,19 @@ const router = createBrowserRouter([
     path: "/manage-admin",
     element: (
       <RoleProtectedRoute allowedRoles={["Admin"]}>
-        <Dashboard />
+        <ManageAdmin />
       </RoleProtectedRoute>
     ),
+    children: [
+      {
+        path: "/manage-admin/:id",
+        element: (
+          <RoleProtectedRoute allowedRoles={["Admin"]}>
+            <ProfilePage />
+          </RoleProtectedRoute>
+        ),
+      }
+    ]
   },
   {
     path: "/add-pokemon",
