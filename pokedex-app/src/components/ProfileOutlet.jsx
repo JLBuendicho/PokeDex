@@ -35,6 +35,7 @@ function ProfilePage() {
           <p>Loading profile...</p>
         )
         }
+        <button>Delete Account</button>
     </div>
   );
 }

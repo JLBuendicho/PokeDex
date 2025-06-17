@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/AuthPage.css";
+import pokeLogo from "/poke.svg";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -44,42 +45,47 @@ function Login() {
   }
 
   return (
-    <div className="auth-container">
-      <h2>Login</h2>
-      <form className="auth-form" onSubmit={handleSubmit}>
-        <div className="auth-field">
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your username"
-            autoComplete="username"
-            required
-          />
-        </div>
-        <div className="auth-field">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-            autoComplete="current-password"
-            required
-          />
-        </div>
-        {error && <div className="auth-error">{error}</div>}
-        <button type="submit" className="auth-button" disabled={isLoading}>
-          {isLoading ? "Logging in..." : "Login"}
-        </button>
-      </form>
-      <p>
-        Don't have an account? <NavLink to="/register">Register here</NavLink>.
-      </p>
-    </div>
+    <>
+      <div className="auth-header">
+        <img className="poke-logo" src={pokeLogo} alt="PokeLogo" />
+      </div>
+      <div className="auth-container">
+        <h2>Login</h2>
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <div className="auth-field">
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your username"
+              autoComplete="username"
+              required
+            />
+          </div>
+          <div className="auth-field">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              autoComplete="current-password"
+              required
+            />
+          </div>
+          {error && <div className="auth-error">{error}</div>}
+          <button type="submit" className="auth-button" disabled={isLoading}>
+            {isLoading ? "Logging in..." : "Login"}
+          </button>
+        </form>
+        <p>
+          Don't have an account? <NavLink to="/register">Register here</NavLink>.
+        </p>
+      </div>
+    </>
   );
 }
 

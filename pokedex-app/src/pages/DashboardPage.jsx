@@ -1,16 +1,18 @@
 import { useAuth } from "../context/AuthContext";
 import ProtectedNavButton from "../components/ProtectedNavButton";
 import RoleProtectedNavButton from "../components/RoleProtectedNavButton";
+import pokeLogo from "/poke.svg";
 
 function Dashboard() {
   const { user, logout } = useAuth();
   console.log("User object:", user); // This will show you the structure in the browser console
   return (
     <div>
-      <h1>
-        Welcome to Pokedex!<br />
-        {user?.username || user?.name || user?.email || "user"}
-      </h1>
+      <img className="poke-logo" src={pokeLogo} alt="PokeLogo" />
+      <h2>
+        Welcome to Pokedex,{" "}
+        {user?.username || user?.name || user?.email || "user"}!
+      </h2>
       <RoleProtectedNavButton
         navTo="/manage-admin"
         buttonText="Manage Admins"

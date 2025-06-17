@@ -3,10 +3,11 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import "../styles/AuthPage.css";
 import pokeLogo from "/poke.svg";
+import RoleProtectedNavButton from "../components/ProtectedNavButton";
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
-function Register() {
+function RegisterAdmin() {
   const [form, setForm] = useState({
     username: "",
     email: "",
@@ -41,6 +42,7 @@ function Register() {
           email: form.email,
           password: form.password,
           profilePictureUrl: form.profilePictureUrl || undefined,
+          role: "Admin",
         },
         {
           headers: { "Content-Type": "application/json" },
@@ -74,7 +76,7 @@ function Register() {
         <img className="poke-logo" src={pokeLogo} alt="PokeLogo" />
       </div>
       <div className="auth-container">
-        <h2>Register</h2>
+        <h2>Register Admin</h2>
         <form className="auth-form" onSubmit={handleSubmit}>
           <div className="auth-field">
             <label htmlFor="username">Username:</label>
@@ -132,12 +134,14 @@ function Register() {
             {loading ? "Registering..." : "Register"}
           </button>
         </form>
-        <p className="auth-link">
-          Already registered? <NavLink to="/">Login here</NavLink>.
-        </p>
+        <RoleProtectedNavButton 
+          navTo={"/manage-admin"}
+          buttonText="Manage Admins"
+          allowedRoles={["Admin"]}
+        />
       </div>
     </>
   );
 }
 
-export default Register;
+export default RegisterAdmin;

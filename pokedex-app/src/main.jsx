@@ -9,7 +9,8 @@ import Register from "./pages/RegisterPage.jsx";
 import AuthProvider from "./context/AuthContext.jsx";
 import Dashboard from "./pages/DashboardPage.jsx";
 import ManageAdmin from "./pages/ManageAdminPage.jsx";
-import ProfilePage from "./pages/ProfilePage.jsx";
+import ProfileOutlet from "./components/ProfileOutlet.jsx";
+import RegisterAdmin from "./pages/RegisterAdminPage.jsx";
 import AddPokemon from "./pages/AddPokemonPage.jsx";
 import PokeDex from "./pages/PokeDexPage.jsx";
 
@@ -42,11 +43,19 @@ const router = createBrowserRouter([
         path: "/manage-admin/:id",
         element: (
           <RoleProtectedRoute allowedRoles={["Admin"]}>
-            <ProfilePage />
+            <ProfileOutlet />
           </RoleProtectedRoute>
         ),
       }
     ]
+  },
+  {
+    path: "/register-admin",
+    element: (
+      <RoleProtectedRoute allowedRoles={["Admin"]}>
+        <RegisterAdmin />
+      </RoleProtectedRoute>
+    ),
   },
   {
     path: "/add-pokemon",
