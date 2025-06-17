@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 function AddPokemon() {
   return (
     <div>
-      <h2>Add Pokemon Page</h2>
+      <h1>Add Pokemon Page</h1>
       <NavLink to="/dashboard">
         <button>Return to Dash</button>
       </NavLink>
@@ -11,4 +11,4 @@ function AddPokemon() {
   );
 }
 
-export default AddPokemon
+export default AddPokemon;

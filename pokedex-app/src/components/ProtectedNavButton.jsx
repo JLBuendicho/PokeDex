@@ -5,9 +5,7 @@ function RoleProtectedNavButton({ navTo, buttonText }) {
   const { isLoading, isAuthenticated } = useAuth();
 
   if (isLoading) {
-    return (
-      <button>Redirecting...</button>
-    )
+    return <button>Redirecting...</button>;
   }
 
   if (isAuthenticated) {

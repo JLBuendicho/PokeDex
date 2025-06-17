@@ -83,4 +83,56 @@ public class AuthController : ControllerBase
             }
         );
     }
+
+    [AllowAnonymous]
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] CreateUserDto createUserDto)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var existingUser = await _context.Users.FirstOrDefaultAsync(u =>
+            u.Username == createUserDto.Username || u.Email == createUserDto.Email
+        );
+        if (existingUser != null)
+        {
+            return Conflict("Username or email already exists.");
+        }
+
+        var passwordHash = PasswordHasher.HashPassword(createUserDto.Password);
+
+        var profilePictureUrl = string.IsNullOrWhiteSpace(createUserDto.ProfilePictureUrl)
+            ? "/profile-default.svg"
+            : createUserDto.ProfilePictureUrl;
+
+        var user = new Models.User
+        {
+            Username = createUserDto.Username,
+            PasswordHash = passwordHash,
+            Email = createUserDto.Email,
+            Role = createUserDto.Role,
+            ProfilePictureUrl = profilePictureUrl,
+        };
+
+        _context.Users.Add(user);
+        await _context.SaveChangesAsync();
+
+        var token = _tokenProvider.GetJwtToken(user);
+        return Ok(
+            new
+            {
+                message = "Registration successful.",
+                token,
+                user = new
+                {
+                    id = user.Id,
+                    username = user.Username,
+                    role = user.Role,
+                    profilePictureUrl = user.ProfilePictureUrl,
+                },
+            }
+        );
+    }
 }

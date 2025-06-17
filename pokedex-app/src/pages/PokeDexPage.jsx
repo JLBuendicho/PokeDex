@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 function PokeDex() {
   return (
     <div>
-      <h2>Pokedex Page</h2>
+      <h1>Pokedex Page</h1>
       <NavLink to="/dashboard">
         <button>Return to Dash</button>
       </NavLink>
@@ -11,4 +11,4 @@ function PokeDex() {
   );
 }
 
-export default PokeDex
+export default PokeDex;

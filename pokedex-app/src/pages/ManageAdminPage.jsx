@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const apiUrl = import.meta.env.VITE_API_BASE_URL
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
-function UserList() {
+function ManageAdminPage() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -18,13 +18,15 @@ function UserList() {
 
   return (
     <ul>
-      {users.map((user) => (
-        <li key={user.id}>
-          {user.username} - {user.role}
-        </li>
-      ))}
+      {users
+        .filter((user) => user.role === "admin")
+        .map((user) => (
+          <li key={user.id}>
+            {user.username} - {user.role}
+          </li>
+        ))}
     </ul>
   );
 }
 
-export default UserList;
+export default ManageAdminPage;

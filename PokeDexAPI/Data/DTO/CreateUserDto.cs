@@ -24,5 +24,7 @@ public class CreateUserDto
     [EmailAddress(ErrorMessage = "Invalid email address format.")]
     public string Email { get; set; } = string.Empty;
 
-    public string Role { get; set; } = "User"; // Default role is User
+    public string Role { get; set; } = "User";
+
+    public string? ProfilePictureUrl { get; set; }
 }

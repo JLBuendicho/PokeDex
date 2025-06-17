@@ -8,9 +8,10 @@ public class User
     public string Username { get; set; } = string.Empty;
     public string PasswordHash { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
-    public string Role { get; set; } = "User"; // Default role is User
+    public string Role { get; set; } = "User";
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+    public string? ProfilePictureUrl { get; set; }
 
     // factory method to create a new user from DTO
     public static User FromCreateUserDto(CreateUserDto dto, string hashedPassword)

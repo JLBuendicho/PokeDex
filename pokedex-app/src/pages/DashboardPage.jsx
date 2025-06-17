@@ -7,19 +7,16 @@ function Dashboard() {
   console.log("User object:", user); // This will show you the structure in the browser console
   return (
     <div>
-      <h2>
-        Login successful! Hello{" "}
+      <h1>
+        Welcome to Pokedex!<br />
         {user?.username || user?.name || user?.email || "user"}
-      </h2>
+      </h1>
       <RoleProtectedNavButton
         navTo="/add-pokemon"
         buttonText="Add Pokemon"
         allowedRoles={["Admin"]}
       />
-      <ProtectedNavButton 
-        navTo="/pokedex"
-        buttonText="PokeDex"
-      />
+      <ProtectedNavButton navTo="/pokedex" buttonText="PokeDex" />
       <button onClick={logout}>Logout</button>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import "./AuthPage.css";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -43,10 +44,10 @@ function Login() {
   }
 
   return (
-    <div>
+    <div className="auth-container">
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <div className="auth-field">
           <label htmlFor="username">Username:</label>
           <input
             type="text"
@@ -58,7 +59,7 @@ function Login() {
             required
           />
         </div>
-        <div>
+        <div className="auth-field">
           <label htmlFor="password">Password:</label>
           <input
             type="password"
@@ -70,11 +71,14 @@ function Login() {
             required
           />
         </div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit" disabled={isLoading}>
+        {error && <div className="auth-error">{error}</div>}
+        <button type="submit" className="auth-button" disabled={isLoading}>
           {isLoading ? "Logging in..." : "Login"}
         </button>
       </form>
+      <p>
+        Don't have an account? <NavLink to="/register">Register here</NavLink>.
+      </p>
     </div>
   );
 }
