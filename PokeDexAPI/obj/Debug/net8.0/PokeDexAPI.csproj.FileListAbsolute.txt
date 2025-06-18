@@ -265,6 +265,7 @@ C:\Users\JL\Documents\GitHub\final projects\INTE\PokeDex\PokeDexAPI\obj\Debug\ne
 C:\Users\JL\Documents\GitHub\final projects\INTE\PokeDex\PokeDexAPI\obj\Debug\net8.0\PokeDexAPI.csproj.CoreCompileInputs.cache
 C:\Users\JL\Documents\GitHub\final projects\INTE\PokeDex\PokeDexAPI\obj\Debug\net8.0\PokeDexAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\JL\Documents\GitHub\final projects\INTE\PokeDex\PokeDexAPI\obj\Debug\net8.0\PokeDexAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\JL\Documents\GitHub\final projects\INTE\PokeDex\PokeDexAPI\obj\Debug\net8.0\PokeDexAPI.sourcelink.json
 C:\Users\JL\Documents\GitHub\final projects\INTE\PokeDex\PokeDexAPI\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\JL\Documents\GitHub\final projects\INTE\PokeDex\PokeDexAPI\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\JL\Documents\GitHub\final projects\INTE\PokeDex\PokeDexAPI\obj\Debug\net8.0\staticwebassets\msbuild.PokeDexAPI.Microsoft.AspNetCore.StaticWebAssets.props
@@ -279,4 +280,3 @@ C:\Users\JL\Documents\GitHub\final projects\INTE\PokeDex\PokeDexAPI\obj\Debug\ne
 C:\Users\JL\Documents\GitHub\final projects\INTE\PokeDex\PokeDexAPI\obj\Debug\net8.0\PokeDexAPI.pdb
 C:\Users\JL\Documents\GitHub\final projects\INTE\PokeDex\PokeDexAPI\obj\Debug\net8.0\PokeDexAPI.genruntimeconfig.cache
 C:\Users\JL\Documents\GitHub\final projects\INTE\PokeDex\PokeDexAPI\obj\Debug\net8.0\ref\PokeDexAPI.dll
-C:\Users\JL\Documents\GitHub\final projects\INTE\PokeDex\PokeDexAPI\obj\Debug\net8.0\PokeDexAPI.sourcelink.json

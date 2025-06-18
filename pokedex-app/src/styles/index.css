@@ -1,5 +1,6 @@
 :root {
-  font-family: 'JetBrains Mono', 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  font-family: "JetBrains Mono", "Fira Mono", "Menlo", "Monaco", "Consolas",
+    "Liberation Mono", "Courier New", monospace;
   line-height: 1.5;
   font-weight: 400;
 
@@ -39,6 +40,45 @@ h1 {
   line-height: 1.1;
 }
 
+.button-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 90%;
+  max-width: 500px;
+  margin: 2em auto;
+  box-sizing: border-box;
+  border-radius: 6px;
+  justify-content: center;
+  gap: 1em;
+  padding: 1em;
+}
+
+.button-container > a,
+.button-container > .navlink,
+.button-container > .protected-nav-button {
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  grid-column: auto;
+  justify-self: stretch;
+}
+
+.button-container > button:only-child,
+.button-container > button:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.button-container > a:only-child,
+.button-container > a:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.button-container > a > button,
+.button-container > .navlink > button,
+.button-container > .protected-nav-button > button {
+  width: 100%;
+}
+
 button {
   border-radius: 6px;
   border: 1px solid transparent;
@@ -50,10 +90,10 @@ button {
   cursor: pointer;
   transition: background 0.2s;
   transition: border-color 0.2s;
-  margin: 0.5em;
 }
 
-button:hover, button:active {
+button:hover,
+button:active {
   border-color: #fff;
 }
 
@@ -64,8 +104,10 @@ button:focus-visible {
 
 .profile-picture {
   width: 100px;
+  height: 100px;
+  object-fit: cover;
   background-color: #1a1a1a;
-  margin-bottom: 1em;
+  margin: 0 auto;
 }
 
 .poke-logo {

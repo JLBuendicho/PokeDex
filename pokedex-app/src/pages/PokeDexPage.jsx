@@ -1,12 +1,10 @@
-import { NavLink } from "react-router-dom";
+import ProtectedNavButton from "../components/ProtectedNavButton";
 
 function PokeDex() {
   return (
     <div>
       <h2>Pokedex Page</h2>
-      <NavLink to="/dashboard">
-        <button>Return to Dash</button>
-      </NavLink>
+      <ProtectedNavButton navTo="/dashboard" buttonText="Return to Dashboard" />
     </div>
   );
 }

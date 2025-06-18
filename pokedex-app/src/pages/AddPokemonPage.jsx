@@ -1,12 +1,10 @@
-import { NavLink } from "react-router-dom";
+import ProtectedNavButton from "../components/ProtectedNavButton";
 
 function AddPokemon() {
   return (
     <div>
       <h1>Add Pokemon Page</h1>
-      <NavLink to="/dashboard">
-        <button>Return to Dash</button>
-      </NavLink>
+      <ProtectedNavButton navTo="/dashboard" buttonText="Return to Dashboard" />
     </div>
   );
 }

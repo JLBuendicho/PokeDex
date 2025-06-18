@@ -62,7 +62,14 @@ public class AuthController : ControllerBase
         var authHeader = Request.Headers["Authorization"].ToString();
         Console.WriteLine("Authorization header: " + authHeader);
 
-        var currentUserId = User.FindFirstValue("id");
+        // Print all claims for debugging
+        Console.WriteLine("User Claims:");
+        foreach (var claim in User.Claims)
+        {
+            Console.WriteLine($"Type: {claim.Type}, Value: {claim.Value}");
+        }
+
+        var currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         if (currentUserId == null)
         {
             return Unauthorized("Invalid token.");

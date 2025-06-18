@@ -3,6 +3,7 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import axios from "axios";
 import "../styles/EntityManagerPage.css";
 import RoleProtectedNavButton from "../components/ProtectedNavButton";
+import ProtectedNavButton from "../components/ProtectedNavButton";
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -27,21 +28,24 @@ function ManageAdminPage() {
         {users
           .filter((user) => user.role === "Admin")
           .map((user) => (
-            <Link key ={user.id} to={`/manage-admin/${user.id}`}><button className="entity-item">{user.username}</button></Link>
+            <Link key={user.id} to={`/manage-admin/${user.id}`}>
+              <button className="entity-item">{user.username}</button>
+            </Link>
           ))}
       </div>
       <div className="entity-container">
-        <Outlet />
+        <Outlet context={{isOutlet: true}} />
       </div>
       <div className="entity-options">
-        <RoleProtectedNavButton 
+        <RoleProtectedNavButton
           navTo={"/register-admin"}
           buttonText="Register Admin"
           allowedRoles={["Admin"]}
         />
-        <NavLink to="/dashboard">
-          <button>Return to Dash</button>
-        </NavLink>
+        <ProtectedNavButton
+          navTo="/dashboard"
+          buttonText="Return to Dashboard"
+        />
       </div>
     </div>
   );

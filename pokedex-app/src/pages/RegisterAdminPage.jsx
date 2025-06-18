@@ -60,9 +60,7 @@ function RegisterAdmin() {
       });
     } catch (err) {
       setError(
-        err.response?.data?.message ||
-          err.response?.data?.error ||
-          err.message ||
+        err.response?.data ||
           "Registration failed."
       );
     } finally {

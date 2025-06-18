@@ -1,22 +1,23 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useOutletContext } from "react-router-dom";
 import axios from "axios";
+import ProtectedNavButton from "./ProtectedNavButton.jsx";
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 function ProfilePage() {
-  const params = useParams();
+  const {isOutlet = false} = useOutletContext() || {};
   const [profile, setProfile] = useState(null);
-
-  console.log("ProfilePage params:", params);
+  const user = JSON.parse(localStorage.getItem('user'));
+  const userId = user?.id;
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const response = await axios.get(`${apiUrl}/api/users/${params.id}`);
+      const response = await axios.get(`${apiUrl}/api/users/${userId}`);
       setProfile(response.data);
     };
     fetchProfile();
-  }, [params.id]);
+  }, [userId]);
 
   console.log("Profile data:", profile);
 
@@ -35,7 +36,22 @@ function ProfilePage() {
           <p>Loading profile...</p>
         )
         }
-        <button>Delete Account</button>
+        <div className="button-container">
+          <button>Delete Account</button>
+          {isOutlet ? null : (
+            <>
+              <ProtectedNavButton
+                navTo={`/edit-profile/${userId}`}
+                buttonText="Edit Profile"
+              />
+              <ProtectedNavButton
+                navTo="/dashboard"
+                buttonText="Return to Dashboard"
+              />
+            </>
+            )
+          }
+        </div>
     </div>
   );
 }

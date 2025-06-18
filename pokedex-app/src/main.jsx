@@ -10,6 +10,7 @@ import AuthProvider from "./context/AuthContext.jsx";
 import Dashboard from "./pages/DashboardPage.jsx";
 import ManageAdmin from "./pages/ManageAdminPage.jsx";
 import ProfileOutlet from "./components/ProfileOutlet.jsx";
+import EditProfile from "./pages/EditProfilePage.jsx";
 import RegisterAdmin from "./pages/RegisterAdminPage.jsx";
 import AddPokemon from "./pages/AddPokemonPage.jsx";
 import PokeDex from "./pages/PokeDexPage.jsx";
@@ -28,6 +29,22 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <Dashboard />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/profile/:id",
+    element: (
+      <ProtectedRoute>
+        <ProfileOutlet />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/edit-profile/:id",
+    element: (
+      <ProtectedRoute>
+        <EditProfile />
       </ProtectedRoute>
     ),
   },

@@ -1,6 +1,4 @@
-using System;
-using System.Net;
-using System.Net.Sockets;
+using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -60,6 +58,9 @@ builder.Services.AddDbContext<PokeDexDbContext>(options =>
 );
 
 // Add JWT Authentication
+var lanIp = GetLocalIPAddress();
+var dynamicAudience = $"http://{lanIp}:5079";
+
 builder
     .Services.AddAuthentication(options =>
     {
@@ -75,10 +76,17 @@ builder
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            ValidAudience = builder.Configuration["Jwt:Audience"],
+            ValidAudiences = new[]
+            {
+                builder.Configuration["Jwt:Audience"],
+                "http://localhost:5079",
+                dynamicAudience,
+            },
             IssuerSigningKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)
             ),
+            NameClaimType = ClaimTypes.NameIdentifier,
+            RoleClaimType = ClaimTypes.Role,
         };
     });
 
@@ -116,13 +124,16 @@ app.Run();
 
 string GetLocalIPAddress()
 {
-    var host = Dns.GetHostEntry(Dns.GetHostName());
+    var host = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
     foreach (var ip in host.AddressList)
     {
-        if (ip.AddressFamily == AddressFamily.InterNetwork)
+        if (
+            ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork
+            && !ip.ToString().StartsWith("127.")
+        )
         {
             return ip.ToString(); // This is your LAN IPv4
         }
     }
-    throw new Exception("No network adapters with an IPv4 address in the system!");
+    return "localhost"; // fallback
 }

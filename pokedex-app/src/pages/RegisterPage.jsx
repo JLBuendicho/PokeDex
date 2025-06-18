@@ -57,10 +57,9 @@ function Register() {
         profilePictureUrl: "",
       });
     } catch (err) {
+      console.error("Registration error:", err);
       setError(
-        err.response?.data?.message ||
-          err.response?.data?.error ||
-          err.message ||
+        err.response?.data ||
           "Registration failed."
       );
     } finally {
