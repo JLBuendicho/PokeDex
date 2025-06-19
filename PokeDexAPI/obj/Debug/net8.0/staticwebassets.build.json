@@ -1,11 +1,58 @@
 {
   "Version": 1,
-  "Hash": "v6BoKopT9WtSVSN+Dh8at9LP6jm41MG8I/rPX3CsAqo=",
+  "Hash": "d76cUgFWl+LbNQR1pbMatS8pN75M+u1hnoYV/hHeG/A=",
   "Source": "PokeDexAPI",
   "BasePath": "_content/PokeDexAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "PokeDexAPI\\wwwroot",
+      "Source": "PokeDexAPI",
+      "ContentRoot": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\",
+      "BasePath": "_content/PokeDexAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\profile-default.svg",
+      "SourceId": "PokeDexAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\",
+      "BasePath": "_content/PokeDexAPI",
+      "RelativePath": "profile-default.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\profile-default.svg"
+    },
+    {
+      "Identity": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\profile-pictures\\1.jpg",
+      "SourceId": "PokeDexAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\",
+      "BasePath": "_content/PokeDexAPI",
+      "RelativePath": "profile-pictures/1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\profile-pictures\\1.jpg"
+    }
+  ]
 }

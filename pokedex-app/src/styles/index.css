@@ -90,6 +90,10 @@ button {
   cursor: pointer;
   transition: background 0.2s;
   transition: border-color 0.2s;
+  margin-bottom: 1em;
+  white-space: normal;
+  word-break: break-word;
+  width: 100%;
 }
 
 button:hover,
@@ -110,9 +114,50 @@ button:focus-visible {
   margin: 0 auto;
 }
 
+.cropper-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 1em auto;
+  background: #222;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
 .poke-logo {
   width: 250px;
   height: auto;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #cfcfcf;
+  color: #222;
+  padding: 2em 2em 1em 2em;
+  border-radius: 10px;
+  min-width: 300px;
+  text-align: center;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+}
+
+.modal .modal-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
 }
 
 @media (prefers-color-scheme: light) {

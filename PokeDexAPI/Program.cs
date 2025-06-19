@@ -69,6 +69,7 @@ builder
     })
     .AddJwtBearer(options =>
     {
+        options.MapInboundClaims = false; // Prevents double-mapping of 'sub' to NameIdentifier
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
@@ -115,6 +116,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors("AllowReactApp");
+
+app.UseStaticFiles();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

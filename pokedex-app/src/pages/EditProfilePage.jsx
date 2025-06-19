@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import pokeLogo from "/poke.svg";
 import Cropper from "react-easy-crop";
+import pokeLogo from "/poke.svg";
+import ProtectedNavButton from "../components/ProtectedNavButton";
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -57,6 +58,7 @@ function EditProfilePage() {
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const [showCrop, setShowCrop] = useState(false);
   const params = useParams();
+  const navigate = useNavigate();
 
   console.log("EditProfilePage params:", params);
   console.log("axios call", `${apiUrl}/api/users/${params.id}`);
@@ -70,6 +72,9 @@ function EditProfilePage() {
         // Adjust endpoint as needed
         const res = await axios.get(`${apiUrl}/api/users/${params.id}`, {
           withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         });
         setUser(res.data);
         setUsername(res.data.username || "");
@@ -87,7 +92,10 @@ function EditProfilePage() {
   useEffect(() => {
     if (user) {
       setUsername(user.username || "");
-      setPreview(user.profilePictureUrl || null);
+      // Only update preview if no new profile picture is selected
+      if (!profilePicture) {
+        setPreview(user.profilePictureUrl ? `${apiUrl}${user.profilePictureUrl}` : null);
+      }
     }
   }, [user]);
 
@@ -117,6 +125,8 @@ function EditProfilePage() {
     );
     setPreview(URL.createObjectURL(croppedBlob));
     setShowCrop(false);
+    setZoom(1);
+    setCrop({ x: 0, y: 0 });
   };
 
   const handleSubmit = async (e) => {
@@ -141,7 +151,10 @@ function EditProfilePage() {
       // Adjust endpoint as needed
       await axios.put(`${apiUrl}/api/users/${params.id}`, formData, {
         withCredentials: true,
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       });
       setSuccess("Profile updated successfully!");
       setCurrentPassword("");
@@ -152,6 +165,12 @@ function EditProfilePage() {
         withCredentials: true,
       });
       setUser(res.data);
+      // Force preview to update with cache-busting param
+      if (res.data.profilePictureUrl) {
+        setPreview(`${apiUrl}${res.data.profilePictureUrl}?t=${Date.now()}`);
+      }
+      setProfilePicture(null); // reset file input
+      navigate(`/profile/${params.id}`);
     } catch (err) {
       setError(
         err.response?.data?.message ||
@@ -242,32 +261,31 @@ function EditProfilePage() {
             />
           </div>
           {showCrop && preview && (
-            <div
-              style={{
-                position: "relative",
-                width: 250,
-                height: 250,
-                margin: "1em auto",
-              }}
-            >
-              <Cropper
-                image={preview}
-                crop={crop}
-                zoom={zoom}
-                aspect={1}
-                onCropChange={setCrop}
-                onZoomChange={setZoom}
-                onCropComplete={onCropComplete}
-              />
+            <>
+              <div className="cropper-container">
+                <Cropper
+                  image={preview}
+                  crop={crop}
+                  zoom={zoom}
+                  aspect={1}
+                  onCropChange={setCrop}
+                  onZoomChange={setZoom}
+                  onCropComplete={onCropComplete}
+                />
+              </div>
               <button
                 type="button"
                 className="auth-button"
-                style={{ marginTop: 10 }}
+                style={{
+                  display: "block",
+                  margin: "10px auto 0 auto",
+                  zIndex: 10,
+                }}
                 onClick={handleCropSave}
               >
                 Save Crop
               </button>
-            </div>
+            </>
           )}
           {preview && !showCrop && (
             <img
@@ -281,6 +299,11 @@ function EditProfilePage() {
           <button type="submit" className="auth-button" disabled={loading}>
             {loading ? "Saving..." : "Save Changes"}
           </button>
+          <ProtectedNavButton
+            navTo={`/profile/${params.id}`}
+            buttonText="Cancel"
+            style={{ marginTop: "10px" }}
+          />
         </form>
       </div>
     </>

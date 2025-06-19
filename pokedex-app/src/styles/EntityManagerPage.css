@@ -11,7 +11,7 @@
     "header header"
     "list content"
     "menu menu";
-  grid-template-columns: minmax(50px, 220px) 1fr;
+  grid-template-columns: minmax(50px, 130px) 1fr;
   grid-template-rows: auto 1fr auto;
 }
 

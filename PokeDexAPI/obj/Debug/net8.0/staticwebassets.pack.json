@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\profile-default.svg",
+      "PackagePath": "staticwebassets\\profile-default.svg"
+    },
+    {
+      "Id": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\profile-pictures\\1.jpg",
+      "PackagePath": "staticwebassets\\profile-pictures\\1.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.PokeDexAPI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.PokeDexAPI.props",
+      "PackagePath": "build\\PokeDexAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.PokeDexAPI.props",
+      "PackagePath": "buildMultiTargeting\\PokeDexAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.PokeDexAPI.props",
+      "PackagePath": "buildTransitive\\PokeDexAPI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

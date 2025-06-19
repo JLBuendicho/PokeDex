@@ -23,6 +23,20 @@ export default function AuthProvider({ children }) {
     }
   }, [])
 
+  // Sync token state with localStorage changes (e.g., after account deletion)
+  useEffect(() => {
+    const handleStorage = (event) => {
+      if (event.key === "token") {
+        setToken(event.newValue)
+        if (!event.newValue) {
+          setUser(null)
+        }
+      }
+    }
+    window.addEventListener("storage", handleStorage)
+    return () => window.removeEventListener("storage", handleStorage)
+  }, [])
+
   const validateToken = useCallback(
     async (overrideToken) => {
       const tokenToUse = overrideToken || token
@@ -87,7 +101,7 @@ export default function AuthProvider({ children }) {
     token,
     user,
     isLoading,
-    isAuthenticated: !!token,
+    isAuthenticated: !!localStorage.getItem("token"),
     login,
     logout,
     validateToken,

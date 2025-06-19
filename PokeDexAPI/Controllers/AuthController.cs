@@ -142,4 +142,17 @@ public class AuthController : ControllerBase
             }
         );
     }
+
+    [Authorize]
+    [HttpGet("test-auth")]
+    public IActionResult TestAuth()
+    {
+        return Ok(
+            new
+            {
+                message = "You are authenticated!",
+                claims = User.Claims.Select(c => new { c.Type, c.Value }),
+            }
+        );
+    }
 }

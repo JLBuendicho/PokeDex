@@ -10,14 +10,14 @@ function Login() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [loginSuccess, setLoginSuccess] = useState(false);
-  const { login, isAuthenticated } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated || loginSuccess) {
+    if (loginSuccess) {
       navigate("/dashboard");
     }
-  }, [isAuthenticated, loginSuccess, navigate]);
+  }, [loginSuccess, navigate]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -35,7 +35,7 @@ function Login() {
       if (result.success) {
         setLoginSuccess(true);
       } else {
-        setError(result.message || "Login failed. Please try again.");
+        setError(result.response.data || "Login failed. Please try again.");
       }
     } catch (err) {
       setError("Invalid username or password.");
@@ -82,7 +82,8 @@ function Login() {
           </button>
         </form>
         <p>
-          Don't have an account? <NavLink to="/register">Register here</NavLink>.
+          Don't have an account? <NavLink to="/register">Register here</NavLink>
+          .
         </p>
       </div>
     </>

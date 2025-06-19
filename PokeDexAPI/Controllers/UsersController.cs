@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PokeDexAPI.Data;
@@ -35,6 +36,7 @@ public class UsersController : ControllerBase
         return Ok(user);
     }
 
+    [Authorize]
     [HttpPut("{id:int}")]
     public async Task<IActionResult> UpdateUser(int id)
     {
@@ -69,7 +71,6 @@ public class UsersController : ControllerBase
         // Handle profile picture upload
         if (file != null && file.Length > 0)
         {
-            // Save the file to wwwroot/profile-pictures/{userId}.jpg (ensure wwwroot exists)
             var uploadsDir = Path.Combine(
                 Directory.GetCurrentDirectory(),
                 "wwwroot",
@@ -78,14 +79,71 @@ public class UsersController : ControllerBase
             if (!Directory.Exists(uploadsDir))
                 Directory.CreateDirectory(uploadsDir);
             var filePath = Path.Combine(uploadsDir, $"{user.Id}.jpg");
-            using (var stream = new FileStream(filePath, FileMode.Create))
+            Console.WriteLine(
+                $"Attempting to save profile picture to: {filePath}, Length: {file.Length}"
+            );
+            try
             {
-                await file.CopyToAsync(stream);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                Console.WriteLine($"Profile picture saved successfully at: {filePath}");
+                user.ProfilePictureUrl = $"/profile-pictures/{user.Id}.jpg";
             }
-            user.ProfilePictureUrl = $"/profile-pictures/{user.Id}.jpg";
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving profile picture: {ex.Message}");
+                return StatusCode(500, new { message = "Error saving profile picture." });
+            }
         }
 
         await _context.SaveChangesAsync();
         return Ok(user);
+    }
+
+    [Authorize]
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> DeleteUser(int id)
+    {
+        var user = await _context.Users.FindAsync(id);
+        if (user == null)
+            return NotFound();
+
+        var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        var userRoleClaim = User.FindFirst(ClaimTypes.Role)?.Value;
+        bool isAdmin = userRoleClaim == "admin" || userRoleClaim == "Admin";
+        bool isSelf = user.Id.ToString() == userIdClaim;
+        if (!isSelf && !isAdmin)
+            return Forbid();
+
+        var defaultProfilePic = "/profile-default.svg";
+        if (
+            !string.IsNullOrEmpty(user.ProfilePictureUrl)
+            && user.ProfilePictureUrl != defaultProfilePic
+        )
+        {
+            var filePath = Path.Combine(
+                Directory.GetCurrentDirectory(),
+                "wwwroot",
+                "profile-pictures",
+                $"{user.Id}.jpg"
+            );
+            if (System.IO.File.Exists(filePath))
+            {
+                try
+                {
+                    System.IO.File.Delete(filePath);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error deleting profile picture: {ex.Message}");
+                }
+            }
+        }
+
+        _context.Users.Remove(user);
+        await _context.SaveChangesAsync();
+        return NoContent();
     }
 }
