@@ -1,45 +1,35 @@
-import { useState } from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import "./UserList.jsx";
-import LoginPage from "./pages/LoginPage.jsx";
-import Login from "./pages/LoginPage.jsx";
+import { useState } from "react"; // Import core React functionality
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Import routing components from React Router
+import "./App.css"; // Stylesheet for the application
+import Login from "./pages/LoginPage.jsx"; // Your page components
 
+// Pokémon form components
+import RegisterPokemonForm from "./pokemon/RegisterPokemonForm.jsx";
+import EditPokemonForm from "./pokemon/EditPokemonForm.jsx";
+
+// Main application component
 function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0); // State example (you can remove this if unused)
 
   return (
-    <>
-      {/* <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
+    // Wrap the app in a Router to enable client-side navigation
+    <Router>
+      {/* Define all routes here */}
+      <Routes>
+        {/* Root path - shows Login page */}
+        <Route path="/" element={<Login />} />
 
-      {/* <Routes>
-        <Route path="/" element={<LoginPage />} />
-      </Routes> */}
+        {/* Register Pokémon form path */}
+        <Route path="/register" element={<RegisterPokemonForm />} />
 
-      <Login />
-    </>
+        {/* Edit Pokémon form path, uses URL parameter 'id' */}
+        <Route path="/edit/:id" element={<EditPokemonForm />} />
+
+        {/* Add more routes here if needed */}
+      </Routes>
+    </Router>
   );
 }
 
+// Export the App component so it can be rendered
 export default App;

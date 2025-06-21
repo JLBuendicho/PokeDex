@@ -17,8 +17,8 @@ function Dashboard() {
           allowedRoles={["Admin"]}
         />
         <RoleProtectedNavButton
-          navTo="/add-pokemon"
-          buttonText="Add Pokemon"
+          navTo="/manage-pokemon"
+          buttonText="Manage Pokemon"
           allowedRoles={["Admin"]}
         />
         <ProtectedNavButton navTo="/pokedex" buttonText="PokeDex" />
