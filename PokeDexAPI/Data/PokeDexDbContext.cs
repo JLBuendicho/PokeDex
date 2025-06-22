@@ -9,4 +9,5 @@ public class PokeDexDbContext : DbContext
         : base(options) { }
 
     public DbSet<User> Users { get; set; }
+    public DbSet<Pokemon> Pokemons { get; set; }
 }

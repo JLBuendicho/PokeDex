@@ -1,6 +1,6 @@
 .entity-manager-container {
   width: 95vw;
-  height: 95vh;
+  height: 85vh;
   margin: 0;
   padding: 0;
   border-radius: 12px;
@@ -54,6 +54,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 12px;
 }
 
@@ -68,4 +69,33 @@
   gap: 12px;
   flex-wrap: wrap;
   box-sizing: border-box;
+}
+
+@media only screen and (max-width: 600px) {
+  .entity-manager-container {
+    grid-template-areas:
+      "header"
+      "list"
+      "content"
+      "menu";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 70px auto auto;
+    height: auto;
+  }
+
+  .entity-list {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .entity-item {
+    width: 90%;
+  }
+
+  .entity-options {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
 }
