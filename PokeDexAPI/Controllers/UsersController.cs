@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PokeDexAPI.Data;
 using PokeDexAPI.Models;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
 
 namespace PokeDexAPI.Controllers;
 
@@ -62,7 +64,18 @@ public class UsersController : ControllerBase
 
         // Update username
         if (!string.IsNullOrWhiteSpace(username) && username != user.Username)
+        {
+            // Check if new username is already taken
+            var usernameExists = await _context.Users.AnyAsync(u =>
+                u.Username == username && u.Id != user.Id
+            );
+
+            if (usernameExists)
+            {
+                return Conflict(new { message = "Username is already taken." });
+            }
             user.Username = username;
+        }
 
         // Update password if provided
         if (!string.IsNullOrWhiteSpace(newPassword))
@@ -78,18 +91,23 @@ public class UsersController : ControllerBase
             );
             if (!Directory.Exists(uploadsDir))
                 Directory.CreateDirectory(uploadsDir);
-            var filePath = Path.Combine(uploadsDir, $"{user.Id}.jpg");
+
+            // Use PNG extension
+            var filePath = Path.Combine(uploadsDir, $"{user.Id}.png");
             Console.WriteLine(
                 $"Attempting to save profile picture to: {filePath}, Length: {file.Length}"
             );
             try
             {
+                // Convert to PNG using ImageSharp
+                using (var image = await Image.LoadAsync(file.OpenReadStream()))
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    await file.CopyToAsync(stream);
+                    await image.SaveAsPngAsync(stream);
                 }
+
                 Console.WriteLine($"Profile picture saved successfully at: {filePath}");
-                user.ProfilePictureUrl = $"/profile-pictures/{user.Id}.jpg";
+                user.ProfilePictureUrl = $"/profile-pictures/{user.Id}.png"; // Update to .png
             }
             catch (Exception ex)
             {

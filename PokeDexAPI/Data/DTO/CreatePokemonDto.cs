@@ -20,5 +20,6 @@ public class CreatePokemonDto
 
     public string Description { get; set; } = string.Empty;
 
+    // Remove required attribute from ImageUrl
     public string ImageUrl { get; set; } = string.Empty;
 }

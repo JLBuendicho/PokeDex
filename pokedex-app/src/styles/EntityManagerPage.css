@@ -71,6 +71,31 @@
   box-sizing: border-box;
 }
 
+/* Admin Search */
+
+.entity-search-input {
+  width: 60%;
+  padding: 10px 15px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.entity-search-input:focus {
+  border-color: #3b4cca;
+  box-shadow: 0 0 8px rgba(59, 76, 202, 0.3);
+}
+
+/* No results message */
+.no-results-message {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+  font-style: italic;
+}
+
 @media only screen and (max-width: 600px) {
   .entity-manager-container {
     grid-template-areas:
@@ -79,12 +104,12 @@
       "content"
       "menu";
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 70px auto auto;
+    grid-template-rows: 1fr 200px auto auto;
     height: auto;
   }
 
   .entity-list {
-    width: 100%;
+    width: 95%;
     padding: 8px;
   }
 
@@ -97,5 +122,23 @@
     align-items: center;
     width: 100%;
   }
-  
+}
+
+@media (prefers-color-scheme: light) {
+  .entity-manager-container {
+    background-color: #add8e6cc;
+    box-shadow: 0 0 20px #00669933;
+  }
+
+  .entity-manager-container hr {
+    border-top: 2px solid #00669933;
+  }
+
+  .entity-list {
+    border: 2px solid #00669933;
+  }
+
+  .entity-search-input {
+    background-color: #cceeff;
+  }
 }

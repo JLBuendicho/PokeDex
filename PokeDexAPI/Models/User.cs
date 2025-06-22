@@ -20,18 +20,4 @@ public class User
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
     public string? ProfilePictureUrl { get; set; }
-
-    // factory method to create a new user from DTO
-    public static User FromCreateUserDto(CreateUserDto dto, string hashedPassword)
-    {
-        return new User
-        {
-            Username = dto.Username,
-            PasswordHash = hashedPassword,
-            Email = dto.Email,
-            Role = dto.Role,
-            CreatedAt = DateTime.UtcNow,
-            UpdatedAt = DateTime.UtcNow,
-        };
-    }
 }

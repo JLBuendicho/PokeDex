@@ -7,8 +7,8 @@ import ProtectedNavButton from "../components/ProtectedNavButton";
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
+// Updated to output PNG instead of JPEG
 function getCroppedImg(imageSrc, crop, zoom, aspect) {
-  // Utility to crop the image using canvas
   return new Promise((resolve, reject) => {
     const image = new window.Image();
     image.src = imageSrc;
@@ -30,13 +30,14 @@ function getCroppedImg(imageSrc, crop, zoom, aspect) {
         crop.width,
         crop.height
       );
+      // Changed to output PNG
       canvas.toBlob((blob) => {
         if (!blob) {
           reject(new Error("Canvas is empty"));
           return;
         }
         resolve(blob);
-      }, "image/jpeg");
+      }, "image/png"); // Changed from "image/jpeg"
     };
     image.onerror = reject;
   });
@@ -69,7 +70,6 @@ function EditProfilePage() {
       try {
         setLoading(true);
         setError("");
-        // Adjust endpoint as needed
         const res = await axios.get(`${apiUrl}/api/users/${params.id}`, {
           withCredentials: true,
           headers: {
@@ -78,7 +78,12 @@ function EditProfilePage() {
         });
         setUser(res.data);
         setUsername(res.data.username || "");
-        setPreview(res.data.profilePictureUrl || null);
+        // Add cache-busting parameter to prevent cached images
+        setPreview(
+          res.data.profilePictureUrl 
+            ? `${apiUrl}${res.data.profilePictureUrl}?t=${Date.now()}`
+            : null
+        );
       } catch (err) {
         setError("Failed to load user info.");
       } finally {
@@ -88,13 +93,17 @@ function EditProfilePage() {
     fetchUser();
   }, []);
 
-  // If user changes, update username and preview (for reactivity)
+  // If user changes, update username and preview
   useEffect(() => {
     if (user) {
       setUsername(user.username || "");
-      // Only update preview if no new profile picture is selected
       if (!profilePicture) {
-        setPreview(user.profilePictureUrl ? `${apiUrl}${user.profilePictureUrl}` : null);
+        // Add cache-busting parameter
+        setPreview(
+          user.profilePictureUrl 
+            ? `${apiUrl}${user.profilePictureUrl}?t=${Date.now()}`
+            : null
+        );
       }
     }
   }, [user]);
@@ -114,19 +123,24 @@ function EditProfilePage() {
 
   const handleCropSave = async () => {
     if (!preview || !croppedAreaPixels) return;
-    const croppedBlob = await getCroppedImg(
-      preview,
-      croppedAreaPixels,
-      zoom,
-      1
-    );
-    setProfilePicture(
-      new File([croppedBlob], "cropped.jpg", { type: "image/jpeg" })
-    );
-    setPreview(URL.createObjectURL(croppedBlob));
-    setShowCrop(false);
-    setZoom(1);
-    setCrop({ x: 0, y: 0 });
+    try {
+      const croppedBlob = await getCroppedImg(
+        preview,
+        croppedAreaPixels,
+        zoom,
+        1
+      );
+      // Save as PNG file
+      setProfilePicture(
+        new File([croppedBlob], "profile.png", { type: "image/png" })
+      );
+      setPreview(URL.createObjectURL(croppedBlob));
+      setShowCrop(false);
+      setZoom(1);
+      setCrop({ x: 0, y: 0 });
+    } catch (err) {
+      setError("Failed to crop image");
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -148,7 +162,7 @@ function EditProfilePage() {
       formData.append("currentPassword", currentPassword);
       if (newPassword) formData.append("newPassword", newPassword);
       if (profilePicture) formData.append("profilePicture", profilePicture);
-      // Adjust endpoint as needed
+      
       await axios.put(`${apiUrl}/api/users/${params.id}`, formData, {
         withCredentials: true,
         headers: {
@@ -156,20 +170,24 @@ function EditProfilePage() {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
+      
       setSuccess("Profile updated successfully!");
       setCurrentPassword("");
       setNewPassword("");
       setConfirmPassword("");
-      // Optionally, refetch user info to update fields
+      
+      // Refetch user info to update fields
       const res = await axios.get(`${apiUrl}/api/users/${params.id}`, {
         withCredentials: true,
       });
       setUser(res.data);
+      
       // Force preview to update with cache-busting param
       if (res.data.profilePictureUrl) {
         setPreview(`${apiUrl}${res.data.profilePictureUrl}?t=${Date.now()}`);
       }
-      setProfilePicture(null); // reset file input
+      
+      setProfilePicture(null);
       navigate(`/profile/${params.id}`);
     } catch (err) {
       setError(
@@ -292,6 +310,7 @@ function EditProfilePage() {
               src={preview}
               alt="Profile Preview"
               className="profile-picture"
+              style={{ maxWidth: "200px", margin: "10px auto" }}
             />
           )}
           {error && <div className="auth-error">{error}</div>}

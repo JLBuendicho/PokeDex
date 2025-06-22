@@ -1,0 +1,109 @@
+.poke-info-card {
+  width: 95vw;
+  height: 80vh;
+  max-height: 700px;
+  max-width: 1400px;
+  margin: 0;
+  padding: 0;
+  border-radius: 12px;
+  box-shadow: none;
+  background: #121212;
+  display: grid;
+  grid-template-areas:
+    "image info"
+    "menu menu";
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr 70px;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.poke-pic {
+  max-width: 300px;
+  grid-area: image;
+  object-fit: cover;
+  margin: 20px;
+}
+
+.poke-info {
+  grid-area: info;
+  padding: 20px;
+}
+
+.poke-type-container {
+  border: 2px solid #444;
+  border-radius: 10px 10px 0px 0px;
+  background-color: #181818;
+  padding: 5px;
+}
+
+.poke-type-container p,
+.poke-stats p {
+  margin: 0;
+}
+
+.poke-types {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.poke-stats {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #444;
+  border-radius: 0px 0px 10px 10px;
+  background-color: #222;
+}
+
+.poke-info-options {
+  grid-area: menu;
+  width: 90%;
+}
+
+@media only screen and (max-width: 600px) {
+  .poke-info-card {
+    width: 90vw;
+    height: 90vh;
+    grid-template-areas:
+      "image"
+      "info"
+      "menu";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 70px;
+  }
+
+  .poke-pic {
+    max-width: 150px;
+    margin: 5px;
+  }
+
+  .poke-info {
+    padding: 15px;
+  }
+
+  .poke-info h2,
+  .poke-info h3 {
+    margin: 5px auto;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .poke-info-card {
+    background: #add8e6cc;
+    box-shadow: 0 0 20px #00669933;
+  }
+
+  .poke-type-container {
+    border: 2px solid #00669933;
+    background-color: #cceeff;
+  }
+
+  .poke-stats {
+    border: 2px solid #00669933;
+    background-color: #ddeeff;
+  }
+}

@@ -421,3 +421,4 @@ C:\Users\Alaiza\Documents\Github\PokeDex\PokeDexAPI\obj\Debug\net8.0\refint\Poke
 C:\Users\Alaiza\Documents\Github\PokeDex\PokeDexAPI\obj\Debug\net8.0\PokeDexAPI.pdb
 C:\Users\Alaiza\Documents\Github\PokeDex\PokeDexAPI\obj\Debug\net8.0\PokeDexAPI.genruntimeconfig.cache
 C:\Users\Alaiza\Documents\Github\PokeDex\PokeDexAPI\obj\Debug\net8.0\ref\PokeDexAPI.dll
+C:\Users\JL\Documents\GitHub\final projects\INTE\PokeDex\PokeDexAPI\bin\Debug\net8.0\SixLabors.ImageSharp.dll

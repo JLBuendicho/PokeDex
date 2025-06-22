@@ -1,4 +1,4 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useOutletContext, useNavigate } from "react-router-dom";
 import axios from "axios";
 import * as jwt_decode from "jwt-decode";
@@ -17,7 +17,11 @@ function ProfilePage() {
   useEffect(() => {
     const fetchProfile = async () => {
       const response = await axios.get(`${apiUrl}/api/users/${userId}`);
-      setProfile(response.data);
+      // Add cache-busting timestamp to profile data
+      setProfile({
+        ...response.data,
+        _cacheBust: Date.now(),  // Unique timestamp for cache busting
+      });
     };
     fetchProfile();
   }, [userId]);
@@ -60,16 +64,43 @@ function ProfilePage() {
 
   console.log("Profile data:", profile);
 
+  let profileImageUrl = null;
+  if (profile?.profilePictureUrl) {
+    let url = profile.profilePictureUrl;
+    
+    // Prepend API URL only for relative paths
+    if (!/^https?:\/\//i.test(url)) {
+      url = `${apiUrl}${url}`;
+    }
+    
+    // Add cache-busting timestamp parameter
+    const separator = url.includes('?') ? '&' : '?';
+    profileImageUrl = `${url}${separator}ts=${profile._cacheBust}`;
+  }
+
+
   return (
     <div>
       {profile ? (
       <div>
         <div>
-          <img
-            className="profile-picture"
-            src={`${apiUrl}${profile.profilePictureUrl}`}
-            alt="Profile"
-          />
+          {profile.profilePictureUrl ? (
+              <img
+                className="profile-picture"
+                src={profileImageUrl}
+                alt="Profile"
+                onError={(e) => {
+                  // Fallback if image fails to load
+                  e.target.onerror = null;
+                  e.target.parentNode.replaceChild(
+                    document.createTextNode('No profile image'),
+                    e.target
+                  );
+                }}
+              />
+            ) : (
+              <div>No profile image</div>
+            )}
           <div>
             <p>Username: {profile.username}</p>
             <p>Email: {profile.email}</p>
@@ -96,7 +127,7 @@ function ProfilePage() {
             <div className="modal">
               <h3>Delete Account</h3>
               <p>
-                Are you sure you want to delete your account?
+                Are you sure you want to delete  account?
                 <br />
                 This action cannot be undone.
               </p>

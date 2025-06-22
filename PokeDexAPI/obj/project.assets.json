@@ -881,6 +881,22 @@
           }
         }
       },
+      "SixLabors.ImageSharp/3.1.10": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/SixLabors.ImageSharp.props": {}
+        }
+      },
       "Swashbuckle.AspNetCore/8.1.4": {
         "type": "package",
         "dependencies": {
@@ -3044,6 +3060,22 @@
         "pomelo.entityframeworkcore.mysql.nuspec"
       ]
     },
+    "SixLabors.ImageSharp/3.1.10": {
+      "sha512": "R1HEPcqx3v+kvlOTPouP0g/Nzzud9pHtjlgGbFax3Ivaz8kkaGfS2EPfyDGpmfoTUQ3nQ5wxdhYyYa9fwYA9cw==",
+      "type": "package",
+      "path": "sixlabors.imagesharp/3.1.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "build/SixLabors.ImageSharp.props",
+        "lib/net6.0/SixLabors.ImageSharp.dll",
+        "lib/net6.0/SixLabors.ImageSharp.xml",
+        "sixlabors.imagesharp.128.png",
+        "sixlabors.imagesharp.3.1.10.nupkg.sha512",
+        "sixlabors.imagesharp.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore/8.1.4": {
       "sha512": "qYk8VHyvs6wML+KXtjyCgS9Aj18mcm0ZtnJeNCTlj/DYQ7A3pfLIztQgLuZS/LEMYsrTo1lSKR3IIZ5/HzVCWA==",
       "type": "package",
@@ -4334,24 +4366,25 @@
       "Microsoft.EntityFrameworkCore.Design >= 8.0.16",
       "MySql.Data >= 9.3.0",
       "Pomelo.EntityFrameworkCore.MySql >= 8.0.3",
+      "SixLabors.ImageSharp >= 3.1.10",
       "Swashbuckle.AspNetCore >= 8.1.4",
       "System.IdentityModel.Tokens.Jwt >= 8.12.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Alaiza\\.nuget\\packages\\": {}
+    "C:\\Users\\JL\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alaiza\\Documents\\Github\\PokeDex\\PokeDexAPI\\PokeDexAPI.csproj",
+      "projectUniqueName": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\PokeDexAPI.csproj",
       "projectName": "PokeDexAPI",
-      "projectPath": "C:\\Users\\Alaiza\\Documents\\Github\\PokeDex\\PokeDexAPI\\PokeDexAPI.csproj",
-      "packagesPath": "C:\\Users\\Alaiza\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alaiza\\Documents\\Github\\PokeDex\\PokeDexAPI\\obj\\",
+      "projectPath": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\PokeDexAPI.csproj",
+      "packagesPath": "C:\\Users\\JL\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Alaiza\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\JL\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -4374,8 +4407,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.300"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -4401,6 +4433,10 @@
             "target": "Package",
             "version": "[8.0.3, )"
           },
+          "SixLabors.ImageSharp": {
+            "target": "Package",
+            "version": "[3.1.10, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[8.1.4, )"
@@ -4421,24 +4457,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.16, 8.0.16]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[8.0.16, 8.0.16]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.16, 8.0.16]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[8.0.16, 8.0.16]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -4447,7 +4465,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.408/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

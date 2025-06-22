@@ -1,12 +1,44 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\pokemon-images\\Bulbasaur_20250623010553851.png",
+      "PackagePath": "staticwebassets\\pokemon-images\\Bulbasaur_20250623010553851.png"
+    },
+    {
+      "Id": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\pokemon-images\\Charmander_20250623010537519.png",
+      "PackagePath": "staticwebassets\\pokemon-images\\Charmander_20250623010537519.png"
+    },
+    {
+      "Id": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\pokemon-images\\Pikachu_20250623010509754.png",
+      "PackagePath": "staticwebassets\\pokemon-images\\Pikachu_20250623010509754.png"
+    },
+    {
+      "Id": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\pokemon-images\\Squirtle_20250623033113036.png",
+      "PackagePath": "staticwebassets\\pokemon-images\\Squirtle_20250623033113036.png"
+    },
+    {
       "Id": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\profile-default.svg",
       "PackagePath": "staticwebassets\\profile-default.svg"
     },
     {
-      "Id": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\profile-pictures\\1.jpg",
-      "PackagePath": "staticwebassets\\profile-pictures\\1.jpg"
+      "Id": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\profile-pictures\\1.png",
+      "PackagePath": "staticwebassets\\profile-pictures\\1.png"
+    },
+    {
+      "Id": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\profile-pictures\\2.png",
+      "PackagePath": "staticwebassets\\profile-pictures\\2.png"
+    },
+    {
+      "Id": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\profile-pictures\\3.png",
+      "PackagePath": "staticwebassets\\profile-pictures\\3.png"
+    },
+    {
+      "Id": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\profile-pictures\\5.png",
+      "PackagePath": "staticwebassets\\profile-pictures\\5.png"
+    },
+    {
+      "Id": "C:\\Users\\JL\\Documents\\GitHub\\final projects\\INTE\\PokeDex\\PokeDexAPI\\wwwroot\\profile-pictures\\6.png",
+      "PackagePath": "staticwebassets\\profile-pictures\\6.png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.PokeDexAPI.Microsoft.AspNetCore.StaticWebAssets.props",
