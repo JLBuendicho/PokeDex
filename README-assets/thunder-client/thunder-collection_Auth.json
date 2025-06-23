@@ -1,0 +1,61 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Auth",
+    "collectionId": "6efdc04e-de83-4ca4-b9b5-b58fa4c59357",
+    "dateExported": "2025-06-23T15:28:30.340Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "ae017359-4ce3-45ae-8c87-e0cc20941af9",
+            "colId": "6efdc04e-de83-4ca4-b9b5-b58fa4c59357",
+            "containerId": "",
+            "name": "register",
+            "url": "http://192.168.1.53:5079/api/auth/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2025-06-23T15:26:49.307Z",
+            "modified": "2025-06-23T15:26:49.307Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"username\": \"Alaiza\",\r\n  \"password\": \"G1n_B1l0g\",\r\n  \"email\": \"alai@mail.com\",\r\n  \"role\": \"User\",\r\n  \"profilePictureUrl\": \"/profile-default.svg\"\r\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "0a0dcfc0-5a38-495e-9ee5-9a5a7ce1a9d5",
+            "colId": "6efdc04e-de83-4ca4-b9b5-b58fa4c59357",
+            "containerId": "",
+            "name": "auth/validate",
+            "url": "http://192.168.1.53:5079/api/auth/validate",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2025-06-23T15:27:01.894Z",
+            "modified": "2025-06-23T15:27:01.894Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJzdWIiOiJhZG1pbiIsImp0aSI6ImU0YTNhYzEwLThjMTMtNDAzYi1iMjFhLTI5ZWYxN2UxNjQzMSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzUwNzUyMjc3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwNzkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwNzkifQ.IPde2Li5PaKei4k40gHaNUdb8cCiWl1L248CduQN2IM"
+            }
+        },
+        {
+            "_id": "21741d6c-663e-44bb-83d9-08f298411fd9",
+            "colId": "6efdc04e-de83-4ca4-b9b5-b58fa4c59357",
+            "containerId": "",
+            "name": "login",
+            "url": "http://192.168.1.53:5079/api/auth/login",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2025-06-23T15:27:14.601Z",
+            "modified": "2025-06-23T15:27:14.601Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"Password123\"\r\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "82pg8apF-9qx6a1xO86PgFSkBdlXywIuoMBO1NhyNnI5urdbWdgslxGDBIQsmjk5_9x18rXMaDASp6Ui9IHhiA"
+}

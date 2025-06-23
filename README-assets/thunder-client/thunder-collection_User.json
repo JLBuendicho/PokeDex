@@ -1,0 +1,81 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "User",
+    "collectionId": "12b13288-b689-46f8-b16a-578d0d2b5f61",
+    "dateExported": "2025-06-23T15:27:53.542Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "4355e5f4-82c7-4962-8136-ddd347c45186",
+            "colId": "12b13288-b689-46f8-b16a-578d0d2b5f61",
+            "containerId": "",
+            "name": "DeleteUser",
+            "url": "http://192.168.1.53:5079/api/users/7",
+            "method": "DELETE",
+            "sortNum": 10000,
+            "created": "2025-06-23T15:21:53.567Z",
+            "modified": "2025-06-23T15:21:53.567Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJzdWIiOiJhZG1pbiIsImp0aSI6ImU0YTNhYzEwLThjMTMtNDAzYi1iMjFhLTI5ZWYxN2UxNjQzMSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzUwNzUyMjc3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwNzkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwNzkifQ.IPde2Li5PaKei4k40gHaNUdb8cCiWl1L248CduQN2IM"
+            }
+        },
+        {
+            "_id": "b2326b5a-6c4c-4af0-bd29-4069b4c5e743",
+            "colId": "12b13288-b689-46f8-b16a-578d0d2b5f61",
+            "containerId": "",
+            "name": "PutUser",
+            "url": "http://192.168.1.53:5079/api/users/7",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2025-06-23T15:22:24.198Z",
+            "modified": "2025-06-23T15:22:24.198Z",
+            "headers": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "AlaizaCarantaur"
+                    },
+                    {
+                        "name": "currentPassword",
+                        "value": "G1n_B1l0g"
+                    }
+                ]
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjciLCJzdWIiOiJBbGFpemEiLCJqdGkiOiI3MGU4ODc3NC1hODA3LTRkODMtOTBmMi1iMjQwNjc4OGZlMDQiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc2VyIiwiZXhwIjoxNzUwNzUyNjg1LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwNzkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwNzkifQ.WhwQFgXZ02xG0wxM8FhCnQhcK63lMPw6Fki4ij0Qblk"
+            }
+        },
+        {
+            "_id": "99cc960a-44fa-46ad-9bb6-8e13fe22a78a",
+            "colId": "12b13288-b689-46f8-b16a-578d0d2b5f61",
+            "containerId": "",
+            "name": "GetUserById",
+            "url": "http://192.168.1.53:5079/api/users/7",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2025-06-23T15:22:44.897Z",
+            "modified": "2025-06-23T15:22:44.897Z",
+            "headers": []
+        },
+        {
+            "_id": "b314d641-d370-4113-b1f4-1dee964698b0",
+            "colId": "12b13288-b689-46f8-b16a-578d0d2b5f61",
+            "containerId": "",
+            "name": "GetUsers",
+            "url": "http://192.168.1.53:5079/api/users",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2025-06-23T15:22:57.484Z",
+            "modified": "2025-06-23T15:22:57.484Z",
+            "headers": []
+        }
+    ],
+    "ref": "jYkDSoxYqISMDptb2zwy5kz4OOJqFghMIIlVbiYd5wc1ko50Q2VQ8B_9aMONHKL6UTyfFtb9muf9CRuu1Ub16A"
+}

@@ -2,20 +2,29 @@
 
 ## PROJECT OVERVIEW
 
-PokeDex is a web application that allows users to manage a collection of Pokemon.
-Admin users can add, edit, or delete Pokemon, while regular users can view the Pokedex. 
-The app features secure authentication and a modern, responsive UI.
-This project is built with a React frontend and an ASP.NET Core Web API backend, utilizing JWT for authentication and role-based access control.
+>PokeDex is a web application that allows users to manage a collection of Pokemon.
+>Admin users can add, edit, or delete Pokemon, while regular users can view the Pokedex. 
+>The app features secure authentication and a modern, responsive UI.
+>This project is built with a React frontend and an ASP.NET Core Web API backend, utilizing JWT for authentication and role-based access control.
 
 
 ## TABLE OF CONTENTS
 - [FEATURES](#features)
 - [TECH STACK](#tech-stack)
 - [GETTING STARTED](#getting-started)
+    - [PREREQUISITES](#prerequisites)
+    - [MySQL Server Setup](#mysql-server-setup)
+    - [P2P SETUP](#p2p-setup)
+    - [BACKEND SETUP](#backend-setup)
+    - [FRONTEND SETUP](#frontend-setup)
+- [ENVIROMENT VARIABLES](#enviroment-variables)
+- [FOLDER STRUCTURE](#folder-structure)
 - [API ENDPOINTS & SAMPLE USAGE (SCREENSHOTS)](#api-endpoints--sample-usage-screenshots)
 - [UI SCREENSHOT](#ui-screenshots)
 - [USAGE](#usage)
-- [FOLDER STRUCTURE](#folder-structure)
+- [USAGE FOR P2P](#usage-for-p2p)
+- [Thunder Client Collections](#thunder-client-collections)
+
 
 ## FEATURES
 
@@ -41,7 +50,7 @@ This project is built with a React frontend and an ASP.NET Core Web API backend,
 
 ## TECH STACK
 
-This project uses the following technologies:
+>This project uses the following technologies:
 - `Frontend`: React, Vite, Axios
 - `Backend`: ASP.NET Core Web API, Entity Framework Core
 - `Database`: MySQL
@@ -50,7 +59,8 @@ This project uses the following technologies:
 ---
 
 ## GETTING STARTED
-To run this project locally, follow the setup instructions below. Ensure you have the prerequisites installed on your machine.
+
+>To run this project locally, follow the setup instructions below. Ensure you have the prerequisites installed on your machine.
 
 ### PREREQUISITES
 - [Node.js & npm](https://nodejs.org/en/download/) (v22)
@@ -68,7 +78,7 @@ To run this project locally, follow the setup instructions below. Ensure you hav
 ---
 
 ### P2P SETUP
-Allow `TCP/IP` connections on port `5079` for frontend and port `5173` for backend in your firewall settings.<br>
+>Allow `TCP/IP` connections on port `5079` for frontend and port `5173` for backend in your firewall settings.<br>
   &emsp;&emsp;This is necessary for the frontend to communicate with the backend API when running peer to peer.
   1. Open your firewall settings.
   2. Add a new rule to allow inbound connections on port `5079` for the frontend.
@@ -238,5 +248,23 @@ Content-Type: application/json
 - Access the frontend via `http://<Network IP>:5079` and the backend API via `http://<Network IP>:5173/api`.
 - Replace `<Network IP>` with the actual IP address of the machine running the backend.
 - Ensure that the firewall rules for ports `5079` and `5173` are correctly set up to allow traffic.
+
+---
+
+## Thunder Client Collections
+
+>You can import these files into `Thunder Client or Postman` to test all API endpoints:
+
+**Authentication Endpoints**
+- [Auth Collection](README-assets/thunder-client/thunder-collection_Auth.json)
+
+**Pokemon Endpoints**
+- [Pokemon Collection](README-assets/thunder-client/thunder-collection_Pokemon.json)
+
+**User Endpoints**
+- [User Collection](README-assets/thunder-client/thunder-collection_User.json)
+
+> To use: In Thunder Client, go to `Collections → Import`, and select any of these files.
+
 
 ---

@@ -1,0 +1,147 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Pokemon",
+    "collectionId": "08e23de6-6dc5-4d07-803e-ccc36437c5ae",
+    "dateExported": "2025-06-23T15:28:07.169Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "56dd285e-ab6e-4100-a204-c28ab0f90b2b",
+            "colId": "08e23de6-6dc5-4d07-803e-ccc36437c5ae",
+            "containerId": "",
+            "name": "DeletePokemon",
+            "url": "http://192.168.1.53:5079/api/pokemons/5",
+            "method": "DELETE",
+            "sortNum": 10000,
+            "created": "2025-06-23T15:23:22.081Z",
+            "modified": "2025-06-23T15:23:22.081Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJzdWIiOiJhZG1pbiIsImp0aSI6ImU0YTNhYzEwLThjMTMtNDAzYi1iMjFhLTI5ZWYxN2UxNjQzMSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzUwNzUyMjc3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwNzkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwNzkifQ.IPde2Li5PaKei4k40gHaNUdb8cCiWl1L248CduQN2IM"
+            }
+        },
+        {
+            "_id": "c6caf60c-a2d7-4963-b42a-64315088a654",
+            "colId": "08e23de6-6dc5-4d07-803e-ccc36437c5ae",
+            "containerId": "",
+            "name": "PutPokemon",
+            "url": "http://192.168.1.53:5079/api/pokemons/5",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2025-06-23T15:25:36.820Z",
+            "modified": "2025-06-23T15:25:36.820Z",
+            "headers": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "Name",
+                        "value": "Alaiza"
+                    },
+                    {
+                        "name": "HP",
+                        "value": "100"
+                    },
+                    {
+                        "name": "Attack",
+                        "value": "69"
+                    },
+                    {
+                        "name": "Defense",
+                        "value": "50"
+                    },
+                    {
+                        "name": "Description",
+                        "value": "pengepounosirhihi"
+                    },
+                    {
+                        "name": "Types",
+                        "value": "Grass"
+                    },
+                    {
+                        "name": "Types",
+                        "value": "Fairy"
+                    }
+                ]
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJzdWIiOiJhZG1pbiIsImp0aSI6ImU0YTNhYzEwLThjMTMtNDAzYi1iMjFhLTI5ZWYxN2UxNjQzMSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzUwNzUyMjc3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwNzkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwNzkifQ.IPde2Li5PaKei4k40gHaNUdb8cCiWl1L248CduQN2IM"
+            }
+        },
+        {
+            "_id": "4bcb6e53-b90a-47c1-965d-659df2eb98f6",
+            "colId": "08e23de6-6dc5-4d07-803e-ccc36437c5ae",
+            "containerId": "",
+            "name": "PostPokemon",
+            "url": "http://192.168.1.53:5079/api/pokemons/register",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2025-06-23T15:25:50.051Z",
+            "modified": "2025-06-23T15:25:50.051Z",
+            "headers": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "Name",
+                        "value": "Alaiza"
+                    },
+                    {
+                        "name": "HP",
+                        "value": "100"
+                    },
+                    {
+                        "name": "Attack",
+                        "value": "20"
+                    },
+                    {
+                        "name": "Defense",
+                        "value": "50"
+                    },
+                    {
+                        "name": "Description",
+                        "value": "pengepounosirhihi"
+                    },
+                    {
+                        "name": "Types",
+                        "value": "[ \"Grass\", \"Fairy\" ]"
+                    }
+                ]
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJzdWIiOiJhZG1pbiIsImp0aSI6ImU0YTNhYzEwLThjMTMtNDAzYi1iMjFhLTI5ZWYxN2UxNjQzMSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzUwNzUyMjc3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwNzkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwNzkifQ.IPde2Li5PaKei4k40gHaNUdb8cCiWl1L248CduQN2IM"
+            }
+        },
+        {
+            "_id": "a350b0c2-cb73-4a6e-81e9-e00100d2f8d0",
+            "colId": "08e23de6-6dc5-4d07-803e-ccc36437c5ae",
+            "containerId": "",
+            "name": "GetPokemonById",
+            "url": "http://192.168.1.53:5079/api/pokemons/3",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2025-06-23T15:26:10.691Z",
+            "modified": "2025-06-23T15:26:10.691Z",
+            "headers": []
+        },
+        {
+            "_id": "ed08fd14-0c31-47d3-8697-e01c016b7047",
+            "colId": "08e23de6-6dc5-4d07-803e-ccc36437c5ae",
+            "containerId": "",
+            "name": "GetPokemons",
+            "url": "http://192.168.1.53:5079/api/pokemons",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2025-06-23T15:26:22.426Z",
+            "modified": "2025-06-23T15:26:22.426Z",
+            "headers": []
+        }
+    ],
+    "ref": "P8S4csCFL3p2wK7BxJl43QRkWbR_2YJ4TRqFolqLdDUBeotjd5UQN1ulaZ3KrwkWgGwyz4Cz0kfaN2yUP2i3eQ"
+}
