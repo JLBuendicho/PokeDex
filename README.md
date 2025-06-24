@@ -79,12 +79,14 @@
 
 ### P2P SETUP
 >Allow `TCP/IP` connections on port `5079` for frontend and port `5173` for backend in your firewall settings.<br>
-  &emsp;&emsp;This is necessary for the frontend to communicate with the backend API when running peer to peer.
+This is necessary for the frontend to communicate with the backend API when running peer to peer.
   1. Open your firewall settings.
   2. Add a new rule to allow inbound connections on port `5079` for the frontend.
   3. Add another rule to allow inbound connections on port `5173` for the backend.
   4. Ensure that both rules are enabled.
   5. Save the changes and restart your firewall if necessary.
+>`Note` Since the launch scripts and program files initially configured to be able to run p2p<br>
+it is recommended to do this set up for a smooth out of the box experience.
 
 ---
 
